@@ -1,0 +1,10 @@
+
+<device_state libver="3.5" filemajor="1" fileminor="0">
+    <device name="DMK 33GX273" base_name="DMK 33GX273" unique_name="DMK 33GX273 21120477">
+        <videoformat>Y800 (640x480)</videoformat>
+        <fps>80.000000</fps>
+        <fliph>0</fliph>
+        <flipv>0</flipv>
+    </device>
+</device_state>
+
