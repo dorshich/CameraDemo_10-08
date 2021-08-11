@@ -152,7 +152,7 @@ HRESULT CRecognizeBarcode::DynamSoft_PerformBarcodeRecognition(CString & fileNam
 	if (bOnlyQR)
 	{
 		reader.GetRuntimeSettings(&runtimeSettings);
-		runtimeSettings.barcodeFormatIds = 1140850688; // for QR 1140850688 for data metrix BF_DATAMATRIX
+		runtimeSettings.barcodeFormatIds = BF_DATAMATRIX; // for QR 1140850688 for data metrix BF_DATAMATRIX
 		runtimeSettings.barcodeFormatIds_2 = 0;
 		runtimeSettings.resultCoordinateType = RCT_PIXEL;
 		iRet = reader.UpdateRuntimeSettings(&runtimeSettings, sError, 256);
