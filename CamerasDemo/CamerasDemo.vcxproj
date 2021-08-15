@@ -80,7 +80,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\administrator\Documents\IC Imaging Control 3.5\samples\VC\opencv\build\include;C:\vcpkg\vcpkg\installed\x64-windows\include\tesseract;C:\vcpkg\vcpkg\installed\x64-windows\include\leptonica</IncludePath>
+    <LibraryPath>C:\Users\administrator\Documents\IC Imaging Control 3.5\samples\VC\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -121,7 +122,8 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(TargetDir);C:\Users\administrator\Documents\IC Imaging Control 3.5\classlib\win32\debug\External;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(TargetDir);C:\Users\administrator\Documents\IC Imaging Control 3.5\classlib\win32\debug\External;C:\vcpkg\vcpkg\packages\leptonica_x64-windows\lib;C:\vcpkg\vcpkg\packages\tesseract_x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world453d.lib;tesseract41.lib;leptonica-1.80.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
