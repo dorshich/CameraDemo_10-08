@@ -30,75 +30,6 @@ CRecognizeBarcode::~CRecognizeBarcode()
 }
 
 #define DYNAMSOFT
-//#ifdef DYNAMSOFT
-//	vector<CString> barcodes;
-//	m_pReq = pReq;
-//	//Check if need stretch
-//	//// convert CString to string
-//	CT2CA pszConvertedAnsiString(pReq->m_sSorces[0]);
-//	// construct a std::string using the LPCSTR input
-//	std::string sPath(pszConvertedAnsiString);
-//	
-//	if (S_OK != DynamSoft_PerformBarcodeRecognition(pReq->m_sSorces[0], barcodes, TRUE))
-//	{
-//		pRes->m_sMessage = CString("Barcode reading failed");
-//		pRes->m_hr = E_FAIL;
-//	}
-//	//If NOT found in original image - try stretching
-//	else if (0 == barcodes.size()) 
-//	{		
-//		StretchImage(sPath, pReq->m_iStretchX / 100, pReq->m_iStretchY / 100);
-//		if (S_OK != DynamSoft_PerformBarcodeRecognition(pReq->m_sSorces[0], barcodes, TRUE)) 
-//		{
-//			pRes->m_sMessage = CString("Barcode reading failed");
-//			pRes->m_hr = E_FAIL;
-//		}
-//		//If NOT found in stretched image also
-//		else if (0 == barcodes.size()) 
-//		{
-//			pRes->m_wMessageType = EVENTLOG_ERROR_TYPE;
-//			pRes->m_sMessage = CString("Barcode not found");
-//			pRes->m_hr = EQ_NEGATIVE_RESULT;
-//		}
-//		// If barcode recognized (in stretched image)
-//		else 
-//		{
-//			pRes->m_wMessageType = EVENTLOG_INFORMATION_TYPE
-//			pRes->m_sMessage = barcodes[0];
-//			pRes->m_iLotExpIndex = m_lBarcodeTop;
-//			for (size_t i = 0; i < min(int(barcodes.size()), int(pRes->m_arrayBarcodes.GetCount())); i++) 
-//			{
-//				CResponseDataItem *pItem = pRes->m_arrayBarcodes.GetAt(i);
-//				pItem->m_sData = barcodes[i];
-//				pItem->m_vrData.intVal = int(i);
-//			}
-//			pRes->m_hr = S_OK;
-//		}					
-//	}
-//	// If barcode recognized (in original image)
-//	else
-//	{
-//		pRes->m_wMessageType = EVENTLOG_INFORMATION_TYPE;
-//		pRes->m_sMessage = barcodes[0];
-//		pRes->m_iLotExpIndex = m_lBarcodeTop;
-//		for (size_t i = 0; i < min(int(barcodes.size()), int(pRes->m_arrayBarcodes.GetCount())); i++)
-//		{
-//			CResponseDataItem *pItem = pRes->m_arrayBarcodes.GetAt(i);
-//			pItem->m_sData = barcodes[i];
-//			pItem->m_vrData.intVal = int(i);
-//		}
-//		pRes->m_hr = S_OK;
-//	}	
-//#endif
-//}
-//
-//void CRecognizeBarcode::RecognizeApprovalStickerBarcode(CRequest * pReq, CResponse * pRes)
-//{
-//	// Actual Function
-//	RecognizeStickerBarcode(pReq, pRes);
-//}
-//
-//// Private Area
 
 HRESULT CRecognizeBarcode::DynamSoft_PerformBarcodeRecognition(CString & fileName, std::vector<CString>& barcodeStrings, BOOL bOnlyQR)
 {
@@ -152,7 +83,7 @@ HRESULT CRecognizeBarcode::DynamSoft_PerformBarcodeRecognition(CString & fileNam
 	if (bOnlyQR)
 	{
 		reader.GetRuntimeSettings(&runtimeSettings);
-		runtimeSettings.barcodeFormatIds = BF_ONED; // for QR 1140850688 for data metrix BF_DATAMATRIX
+		runtimeSettings.barcodeFormatIds = -2146433025; // for QR 1140850688 for data metrix BF_DATAMATRIX for zebra BF_ONED
 		runtimeSettings.barcodeFormatIds_2 = 0;
 		runtimeSettings.resultCoordinateType = RCT_PIXEL;
 		iRet = reader.UpdateRuntimeSettings(&runtimeSettings, sError, 256);

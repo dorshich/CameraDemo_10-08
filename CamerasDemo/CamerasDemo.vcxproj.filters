@@ -27,10 +27,10 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="RecognizeBarcode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RecognizeBarcode.h">
+    <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
